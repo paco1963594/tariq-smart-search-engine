@@ -65,23 +65,11 @@
   .lang-btn:hover {
     color: #f39c12;
   }
-  #dark-mode-toggle {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    background-color: #f1c40f;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 15px;
-    font-weight: bold;
-    cursor: pointer;
-  }
   footer {
     position: fixed;
-    bottom: 10px;
+    bottom: 40px;
     width: 100%;
     text-align: center;
-    padding-bottom: 10px;
   }
   .footer-links {
     display: flex;
@@ -111,9 +99,14 @@
   .drive { background: #fbbc05; }
   .photos { background: #4285f4; }
   .products { background: #999; }
-
   .footer-link:hover {
     filter: brightness(1.2);
+  }
+  #legal {
+    color: #888;
+    font-size: 0.8em;
+    margin-top: 10px;
+    padding-bottom: 15px;
   }
 </style>
 </head>
@@ -147,10 +140,12 @@
     <a href="https://photos.google.com" target="_blank" class="footer-link photos" title="Google Photos">I</a>
     <a href="https://www.google.com/intl/ar/about/products" target="_blank" class="footer-link products" title="All Google Products">+</a>
   </div>
+  <div id="legal">
+    تنويه قانوني: هذا الموقع لا ينتمي إلى شركة Google، ولا يستخدم أي شعارات رسمية خاصة بها. جميع الوظائف هنا موجهة للاستخدام الشخصي والتعليمي فقط، ومحرك البحث يُعيد التوجيه إلى Google كمصدر خارجي.
+  </div>
 </footer>
 
 <script>
-  // ترجمات نصوص البحث
   const translations = {
     ar: { placeholder: "ابحث هنا...", searchBtn: "بحث" },
     fr: { placeholder: "Recherchez ici...", searchBtn: "Chercher" },
@@ -158,18 +153,16 @@
     es: { placeholder: "Buscar aquí...", searchBtn: "Buscar" }
   };
 
-  // كلمات مفتاحية للتحويل للرابط 12go لكل اللغات
   const keywords = [
-    "حجز فنادق", "حجز طائرات", "حجز سيارات", "حجز حافلات", "بحث عن اماكن للسياحة",
-    "hotel booking", "flight booking", "car rental", "bus booking", "tourism search",
-    "réservation hôtel", "réservation vol", "location voiture", "réservation bus", "recherche touristique",
-    "reserva hotel", "reserva vuelo", "alquiler coche", "reserva autobús", "búsqueda turística"
+    "حجز الفنادق", "حجز الطائرات", "حجز القطارات", "حجز السيارات", "صرف العملة",
+    "hotel booking", "flight booking", "train booking", "car rental", "currency exchange",
+    "réservation hôtel", "réservation vol", "réservation train", "location voiture", "change de devises",
+    "reserva hotel", "reserva vuelo", "reserva tren", "alquiler coche", "cambio de moneda"
   ];
 
-  // رابط البوكينج
   const bookingUrl = "https://12go.asia/?z=12574420";
 
-  // تغيير اللغة
+  // تغيير اللغة وتحديث النصوص
   document.querySelectorAll(".lang-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const lang = btn.getAttribute("data-lang");
@@ -178,19 +171,25 @@
     });
   });
 
-  // وظيفة البحث مع التعامل مع الكلمات المفتاحية
+  // وظيفة البحث مع التوجيه حسب الكلمات المفتاحية
   document.getElementById("search-button").addEventListener("click", () => {
     const query = document.getElementById("search-input").value.trim().toLowerCase();
-    if (!query) return; // لو خالي ما تعمل شيء
+    if (!query) return;
 
-    // هل الكلمة المفتاحية موجودة ضمن الكلمات المعرفة؟
-    const matchedKeyword = keywords.find(keyword => query.includes(keyword.toLowerCase()));
-    if (matchedKeyword) {
+    // تحقق هل الكلمة موجودة في الكلمات المفتاحية
+    const matched = keywords.some(keyword => query.includes(keyword.toLowerCase()));
+    if (matched) {
       window.open(bookingUrl, "_blank");
     } else {
-      // بحث عادي على جوجل
-      const googleSearchUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
-      window.open(googleSearchUrl, "_blank");
+      const googleUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
+      window.open(googleUrl, "_blank");
+    }
+  });
+
+  // دعم الضغط Enter في خانة البحث
+  document.getElementById("search-input").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+      document.getElementById("search-button").click();
     }
   });
 </script>

@@ -1,183 +1,199 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google-adsense-account" content="ca-pub-7982551543369118">
-  <title>Tariq Smart Search</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #000;
-      color: #fff;
-      transition: background-color 0.5s, color 0.5s;
-    }
-    .container {
-      text-align: center;
-      margin-top: 15vh;
-    }
-    h1 {
-      font-size: 5rem;
-      font-weight: bold;
-      animation: colorCycle 10s infinite linear;
-    }
-    @keyframes colorCycle {
-      0% { color: #ff4444; }
-      25% { color: #44ff44; }
-      50% { color: #4488ff; }
-      75% { color: #ffff44; }
-      100% { color: #ff4444; }
-    }
-    input[type="text"] {
-      padding: 12px;
-      font-size: 1.5rem;
-      width: 50%;
-      border-radius: 25px;
-      border: none;
-      outline: none;
-    }
-    .buttons {
-      margin-top: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 20px;
-      margin: 5px;
-      cursor: pointer;
-      background-color: #333;
-      color: #fff;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #555;
-    }
-    .lang-switch {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-    .lang-switch button {
-      background-color: gold;
-      color: black;
-      margin-left: 5px;
-    }
-    .dark-toggle {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-    }
-    .footer {
-      margin-top: 100px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-    .footer a {
-      padding: 10px 15px;
-      background-color: #222;
-      border-radius: 20px;
-      color: white;
-      text-decoration: none;
-    }
-    .footer a:hover {
-      background-color: #444;
-    }
-    small {
-      display: block;
-      margin-top: 40px;
-      color: gray;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="google-adsense-account" content="ca-pub-7982551543369118" />
+<title>Tariq Smart Search</title>
+<style>
+  body {
+    background-color: #000;
+    color: #eee;
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+  }
+  header {
+    text-align: center;
+    padding: 20px 0 10px;
+  }
+  #title {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+    color: #f1c40f; /* ذهبي */
+  }
+  #search-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  #search-input {
+    width: 60%;
+    padding: 12px 15px;
+    font-size: 1.1em;
+    border-radius: 30px 0 0 30px;
+    border: none;
+    outline: none;
+  }
+  #search-button {
+    background-color: #f1c40f;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #search-button:hover {
+    background-color: #d4ac0d;
+  }
+  #lang-selector {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .lang-btn {
+    cursor: pointer;
+    display: inline-block;
+    color: #f1c40f;
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    user-select: none;
+  }
+  .lang-btn:hover {
+    color: #f39c12;
+  }
+  #dark-mode-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background-color: #f1c40f;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+  }
+  /* ألوان الأزرار */
+  .gmail { background: #ea4335; }
+  .youtube { background: #ff0000; }
+  .maps { background: #4285f4; }
+  .news { background: #ff5722; }
+  .translate { background: #34a853; }
+  .play { background: #4285f4; }
+  .drive { background: #fbbc05; }
+  .photos { background: #4285f4; }
+  .products { background: #999; }
+
+  .footer-link:hover {
+    filter: brightness(1.2);
+  }
+</style>
 </head>
 <body>
 
-  <div class="lang-switch">
-    <button onclick="setLang('ar')">🌐 العربية</button>
-    <button onclick="setLang('en')">English</button>
-    <button onclick="setLang('fr')">Français</button>
-    <button onclick="setLang('es')">Español</button>
+<header>
+  <div id="title">Tariq</div>
+
+  <div id="search-box">
+    <input type="text" id="search-input" placeholder="ابحث هنا..." aria-label="Search input" />
+    <button id="search-button">بحث</button>
   </div>
 
-  <div class="dark-toggle">
-    <button onclick="toggleTheme()">🌓</button>
+  <div id="lang-selector">
+    <span class="lang-btn" data-lang="ar">العربية</span> |
+    <span class="lang-btn" data-lang="fr">Français</span> |
+    <span class="lang-btn" data-lang="en">English</span> |
+    <span class="lang-btn" data-lang="es">Español</span>
   </div>
+</header>
 
-  <div class="container">
-    <h1 id="logo">Tariq</h1>
-    <input type="text" id="search" placeholder="ابحث هنا...">
-    <div class="buttons">
-      <button onclick="doSearch()">بحث</button>
-      <button onclick="luckySearch()">أنا محظوظ</button>
-    </div>
-
-    <div class="footer">
-      <a href="https://www.google.com/gmail/">Gmail</a>
-      <a href="https://play.google.com/">Play</a>
-      <a href="https://drive.google.com/">Drive</a>
-      <a href="https://www.google.com/imghp">الصور</a>
-      <a href="https://maps.google.com/">الخرائط</a>
-      <a href="https://news.google.com/">الأخبار</a>
-      <a href="https://translate.google.com/">الترجمة</a>
-      <a href="https://www.youtube.com/">YouTube</a>
-      <a href="https://www.google.com/intl/ar/about/products">كل المنتجات</a>
-    </div>
-
-    <small>
-      تنويه قانوني: هذا الموقع لا ينتمي إلى شركة Google، ولا يستخدم أي شعارات رسمية خاصة بها.
-      جميع الوظائف هنا موجهة للاستخدام الشخصي والتعليمي فقط.
-    </small>
+<footer>
+  <div class="footer-links">
+    <a href="https://mail.google.com" target="_blank" class="footer-link gmail" title="Gmail">G</a>
+    <a href="https://www.youtube.com" target="_blank" class="footer-link youtube" title="YouTube">Y</a>
+    <a href="https://maps.google.com" target="_blank" class="footer-link maps" title="Google Maps">M</a>
+    <a href="https://news.google.com" target="_blank" class="footer-link news" title="Google News">N</a>
+    <a href="https://translate.google.com" target="_blank" class="footer-link translate" title="Google Translate">T</a>
+    <a href="https://play.google.com" target="_blank" class="footer-link play" title="Google Play">P</a>
+    <a href="https://drive.google.com" target="_blank" class="footer-link drive" title="Google Drive">D</a>
+    <a href="https://photos.google.com" target="_blank" class="footer-link photos" title="Google Photos">I</a>
+    <a href="https://www.google.com/intl/ar/about/products" target="_blank" class="footer-link products" title="All Google Products">+</a>
   </div>
+</footer>
 
-  <script>
-    function toggleTheme() {
-      const body = document.body;
-      if (body.style.backgroundColor === 'white') {
-        body.style.backgroundColor = '#000';
-        body.style.color = '#fff';
-      } else {
-        body.style.backgroundColor = 'white';
-        body.style.color = '#000';
-      }
-    }
+<script>
+  // ترجمات نصوص البحث
+  const translations = {
+    ar: { placeholder: "ابحث هنا...", searchBtn: "بحث" },
+    fr: { placeholder: "Recherchez ici...", searchBtn: "Chercher" },
+    en: { placeholder: "Search here...", searchBtn: "Search" },
+    es: { placeholder: "Buscar aquí...", searchBtn: "Buscar" }
+  };
 
-    function setLang(lang) {
-      const input = document.getElementById("search");
-      switch (lang) {
-        case 'ar':
-          input.placeholder = "ابحث هنا...";
-          break;
-        case 'en':
-          input.placeholder = "Search here...";
-          break;
-        case 'fr':
-          input.placeholder = "Cherchez ici...";
-          break;
-        case 'es':
-          input.placeholder = "Buscar aquí...";
-          break;
-      }
-    }
+  // كلمات مفتاحية للتحويل للرابط 12go لكل اللغات
+  const keywords = [
+    "حجز فنادق", "حجز طائرات", "حجز سيارات", "حجز حافلات", "بحث عن اماكن للسياحة",
+    "hotel booking", "flight booking", "car rental", "bus booking", "tourism search",
+    "réservation hôtel", "réservation vol", "location voiture", "réservation bus", "recherche touristique",
+    "reserva hotel", "reserva vuelo", "alquiler coche", "reserva autobús", "búsqueda turística"
+  ];
 
-    function doSearch() {
-      const keywords = document.getElementById("search").value.toLowerCase();
-      const redirectKeywords = [
-        "hotel", "reservation", "حجز", "reserva", "otèl", "otél", "حافلات", "قطارات", "طائرات", "سياحة", "سيارات", "فندق", "قطار", "bus", "train", "car", "flight", "tourism"
-      ];
-      if (redirectKeywords.some(kw => keywords.includes(kw))) {
-        window.location.href = "https://12go.asia/?z=12574420";
-      } else {
-        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(keywords)}`;
-      }
-    }
+  // رابط البوكينج
+  const bookingUrl = "https://12go.asia/?z=12574420";
 
-    function luckySearch() {
-      window.location.href = "https://www.google.com/doodles";
+  // تغيير اللغة
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang");
+      document.getElementById("search-input").placeholder = translations[lang].placeholder;
+      document.getElementById("search-button").textContent = translations[lang].searchBtn;
+    });
+  });
+
+  // وظيفة البحث مع التعامل مع الكلمات المفتاحية
+  document.getElementById("search-button").addEventListener("click", () => {
+    const query = document.getElementById("search-input").value.trim().toLowerCase();
+    if (!query) return; // لو خالي ما تعمل شيء
+
+    // هل الكلمة المفتاحية موجودة ضمن الكلمات المعرفة؟
+    const matchedKeyword = keywords.find(keyword => query.includes(keyword.toLowerCase()));
+    if (matchedKeyword) {
+      window.open(bookingUrl, "_blank");
+    } else {
+      // بحث عادي على جوجل
+      const googleSearchUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
+      window.open(googleSearchUrl, "_blank");
     }
-  </script>
+  });
+</script>
 
 </body>
 </html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-adsense-account" content="ca-pub-7982551543369118">
+  <title>Tariq Smart Search</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #fff;
+      transition: background-color 0.5s, color 0.5s;
+    }
+    .container {
+      text-align: center;
+      margin-top: 15vh;
+    }
+    h1 {
+      font-size: 5rem;
+      font-weight: bold;
+      animation: colorCycle 10s infinite linear;
+    }
+    @keyframes colorCycle {
+      0% { color: #ff4444; }
+      25% { color: #44ff44; }
+      50% { color: #4488ff; }
+      75% { color: #ffff44; }
+      100% { color: #ff4444; }
+    }
+    input[type="text"] {
+      padding: 12px;
+      font-size: 1.5rem;
+      width: 50%;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 20px;
+      margin: 5px;
+      cursor: pointer;
+      background-color: #333;
+      color: #fff;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #555;
+    }
+    .lang-switch {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .lang-switch button {
+      background-color: gold;
+      color: black;
+      margin-left: 5px;
+    }
+    .dark-toggle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    .footer {
+      margin-top: 100px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .footer a {
+      padding: 10px 15px;
+      background-color: #222;
+      border-radius: 20px;
+      color: white;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      background-color: #444;
+    }
+    small {
+      display: block;
+      margin-top: 40px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lang-switch">
+    <button onclick="setLang('ar')">🌐 العربية</button>
+    <button onclick="setLang('en')">English</button>
+    <button onclick="setLang('fr')">Français</button>
+    <button onclick="setLang('es')">Español</button>
+  </div>
+
+  <div class="dark-toggle">
+    <button onclick="toggleTheme()">🌓</button>
+  </div>
+
+  <div class="container">
+    <h1 id="logo">Tariq</h1>
+    <input type="text" id="search" placeholder="ابحث هنا...">
+    <div class="buttons">
+      <button onclick="doSearch()">بحث</button>
+      <button onclick="luckySearch()">أنا محظوظ</button>
+    </div>
+
+    <div class="footer">
+      <a href="https://www.google.com/gmail/">Gmail</a>
+      <a href="https://play.google.com/">Play</a>
+      <a href="https://drive.google.com/">Drive</a>
+      <a href="https://www.google.com/imghp">الصور</a>
+      <a href="https://maps.google.com/">الخرائط</a>
+      <a href="https://news.google.com/">الأخبار</a>
+      <a href="https://translate.google.com/">الترجمة</a>
+      <a href="https://www.youtube.com/">YouTube</a>
+      <a href="https://www.google.com/intl/ar/about/products">كل المنتجات</a>
+    </div>
+
+    <small>
+      تنويه قانوني: هذا الموقع لا ينتمي إلى شركة Google، ولا يستخدم أي شعارات رسمية خاصة بها.
+      جميع الوظائف هنا موجهة للاستخدام الشخصي والتعليمي فقط.
+    </small>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      if (body.style.backgroundColor === 'white') {
+        body.style.backgroundColor = '#000';
+        body.style.color = '#fff';
+      } else {
+        body.style.backgroundColor = 'white';
+        body.style.color = '#000';
+      }
+    }
+
+    function setLang(lang) {
+      const input = document.getElementById("search");
+      switch (lang) {
+        case 'ar':
+          input.placeholder = "ابحث هنا...";
+          break;
+        case 'en':
+          input.placeholder = "Search here...";
+          break;
+        case 'fr':
+          input.placeholder = "Cherchez ici...";
+          break;
+        case 'es':
+          input.placeholder = "Buscar aquí...";
+          break;
+      }
+    }
+
+    function doSearch() {
+      const keywords = document.getElementById("search").value.toLowerCase();
+      const redirectKeywords = [
+        "hotel", "reservation", "حجز", "reserva", "otèl", "otél", "حافلات", "قطارات", "طائرات", "سياحة", "سيارات", "فندق", "قطار", "bus", "train", "car", "flight", "tourism"
+      ];
+      if (redirectKeywords.some(kw => keywords.includes(kw))) {
+        window.location.href = "https://12go.asia/?z=12574420";
+      } else {
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(keywords)}`;
+      }
+    }
+
+    function luckySearch() {
+      window.location.href = "https://www.google.com/doodles";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,75 +1,32 @@
-<!-- ... باقي كود HTML فوق ... -->
-<style>
-  /* ... باقي CSS ... */
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>محرك البحث Fallaowme</title>
+  <!-- يمكن إضافة Meta Tags هنا -->
+  <style>
+    /* ... هنا كل CSS مثل الذي أعطيتك ... */
+  </style>
+</head>
+<body>
+  <!-- هنا محتوى الصفحة -->
+  <div id="icon-tariq">T</div>
+  <h1 id="title">Fallaowme</h1>
 
-  #icon-tariq {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    width: 65px; /* كبرنا الحجم */
-    height: 65px;
-    background: conic-gradient(#4285f4, #34a853, #fbbc05, #ea4335);
-    color: white;
-    font-weight: bold;
-    font-size: 2em; /* كبرنا الخط داخل الدائرة */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  }
+  <!-- واجهة البحث -->
+  <input type="text" id="search-input" placeholder="ابحث هنا..." />
+  <button id="search-button">بحث</button>
 
-  /* ... باقي CSS كما هو ... */
-</style>
+  <!-- أزرار اللغة -->
+  <div>
+    <button class="lang-btn" data-lang="ar">AR</button>
+    <button class="lang-btn" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+  </div>
 
-<!-- ... داخل سكريبت JS في الأسفل ... -->
-<script>
-  const translations = {
-    ar: { placeholder: "ابحث هنا...", searchBtn: "بحث" },
-    fr: { placeholder: "Recherchez ici...", searchBtn: "Chercher" },
-    en: { placeholder: "Search here...", searchBtn: "Search" },
-    es: { placeholder: "Buscar aquí...", searchBtn: "Buscar" }
-  };
-
-  const bookingKeywords = [
-    "حجز فندق", "حجز فنادق", "حجز طائرة", "حجز الطائرات", "حجز القطار", "حجز القطارات",
-    "حجز الحافلة", "حجز الحافلات", "حجز باص", "حجز باصات", "حجز تاكسي", "حجز سيارة", "حجز السيارات",
-    "الفندق", "الفنادق", "القطار", "القطارات", "الطائرة", "الطائرات", "الحافلة", "الباص", "التاكسي",
-    "hotel", "flight", "train", "bus", "car", "taxi", "book hotel", "book flight", "book train"
-  ];
-
-  const bookingUrl = "https://12go.asia/?z=12574420";
-
-  document.querySelectorAll(".lang-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const lang = btn.getAttribute("data-lang");
-      document.getElementById("search-input").placeholder = translations[lang].placeholder;
-      document.getElementById("search-button").textContent = translations[lang].searchBtn;
-    });
-  });
-
-  document.getElementById("search-button").addEventListener("click", () => {
-    const query = document.getElementById("search-input").value.trim().toLowerCase();
-    if (!query) return;
-
-    const isBooking = bookingKeywords.some(keyword => query.includes(keyword.toLowerCase()));
-    const url = isBooking
-      ? bookingUrl
-      : "https://www.google.com/search?q=" + encodeURIComponent(query);
-
-    window.open(url, "_blank");
-  });
-
-  document.getElementById("search-input").addEventListener("keydown", function(e) {
-    if (e.key === "Enter") {
-      document.getElementById("search-button").click();
-    }
-  });
-
-  const title = document.getElementById("title");
-  const colors = ["#f1c40f", "#e67e22", "#1abc9c", "#3498db", "#e74c3c"];
-  let colorIndex = 0;
-  setInterval(() => {
-    title.style.color = colors[colorIndex];
-    colorIndex = (colorIndex + 1) % colors.length;
-  }, 3000);
-</script>
+  <script>
+    // ... هنا كل كود JavaScript ...
+  </script>
+</body>
+</html>

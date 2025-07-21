@@ -1,32 +1,72 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-  <meta charset="UTF-8">
-  <title>محرك البحث Fallaowme</title>
-  <!-- يمكن إضافة Meta Tags هنا -->
-  <style>
-    /* ... هنا كل CSS مثل الذي أعطيتك ... */
-  </style>
-</head>
-<body>
-  <!-- هنا محتوى الصفحة -->
-  <div id="icon-tariq">T</div>
-  <h1 id="title">Fallaowme</h1>
+<!-- فقط هذا الجزء يحتاج تحديث في كودك: -->
 
-  <!-- واجهة البحث -->
-  <input type="text" id="search-input" placeholder="ابحث هنا..." />
-  <button id="search-button">بحث</button>
+<style>
+  /* ... باقي التنسيق كما هو ... */
+  #icon-tariq {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 60px; /* كان 45px، كبرتها */
+    height: 60px; /* كان 45px، كبرتها */
+    background: conic-gradient(#4285f4, #34a853, #fbbc05, #ea4335);
+    color: white;
+    font-weight: bold;
+    font-size: 1.6em; /* كان 1.4em */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+</style>
 
-  <!-- أزرار اللغة -->
-  <div>
-    <button class="lang-btn" data-lang="ar">AR</button>
-    <button class="lang-btn" data-lang="fr">FR</button>
-    <button class="lang-btn" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="es">ES</button>
-  </div>
+<script>
+  const translations = {
+    ar: { placeholder: "ابحث هنا...", searchBtn: "بحث" },
+    fr: { placeholder: "Recherchez ici...", searchBtn: "Chercher" },
+    en: { placeholder: "Search here...", searchBtn: "Search" },
+    es: { placeholder: "Buscar aquí...", searchBtn: "Buscar" }
+  };
 
-  <script>
-    // ... هنا كل كود JavaScript ...
-  </script>
-</body>
-</html>
+  const keywords = [
+    // عربي
+    "حجز الفنادق", "حجز الطائرات", "حجز القطارات", "حجز السيارات", "صرف العملة", "فندق", "تذكرة", "رحلة", "تاكسي", "سفر",
+    // إنجليزي
+    "hotel booking", "flight booking", "train booking", "car rental", "currency exchange", "travel ticket", "book hotel", "cheap flights", "airport taxi",
+    // فرنسي
+    "réservation hôtel", "réservation vol", "réservation train", "location voiture", "change de devises", "voyage", "billet avion", "hôtel pas cher",
+    // إسباني
+    "reserva hotel", "reserva vuelo", "reserva tren", "alquiler coche", "cambio de moneda", "viaje", "billete", "hotel barato"
+  ];
+
+  const bookingUrl = "https://12go.asia/?z=12574420";
+
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang");
+      document.getElementById("search-input").placeholder = translations[lang].placeholder;
+      document.getElementById("search-button").textContent = translations[lang].searchBtn;
+    });
+  });
+
+  document.getElementById("search-button").addEventListener("click", () => {
+    const query = document.getElementById("search-input").value.trim().toLowerCase();
+    if (!query) return;
+    const matched = keywords.some(keyword => query.includes(keyword.toLowerCase()));
+    const url = matched ? bookingUrl : "https://www.google.com/search?q=" + encodeURIComponent(query);
+    window.open(url, "_blank");
+  });
+
+  document.getElementById("search-input").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+      document.getElementById("search-button").click();
+    }
+  });
+
+  const title = document.getElementById("title");
+  const colors = ["#f1c40f", "#e67e22", "#1abc9c", "#3498db", "#e74c3c"];
+  let colorIndex = 0;
+  setInterval(() => {
+    title.style.color = colors[colorIndex];
+    colorIndex = (colorIndex + 1) % colors.length;
+  }, 3000);
+</script>

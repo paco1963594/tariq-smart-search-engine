@@ -1,173 +1,27 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="google-adsense-account" content="ca-pub-7982551543369118" />
-  <title>Tariq Smart Search</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #eee;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-    #icon-tariq {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      width: 45px;
-      height: 45px;
-      background: conic-gradient(#4285f4, #34a853, #fbbc05, #ea4335);
-      color: white;
-      font-weight: bold;
-      font-size: 1.4em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
-    #title {
-      font-size: 2.8em;
-      font-weight: bold;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-      transition: color 0.5s ease;
-    }
-    #search-box {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-      width: 100%;
-    }
-    #search-input {
-      width: 60%;
-      padding: 12px 15px;
-      font-size: 1.1em;
-      border-radius: 30px 0 0 30px;
-      border: none;
-      outline: none;
-    }
-    #search-button {
-      background-color: #f1c40f;
-      border: none;
-      border-radius: 0 30px 30px 0;
-      padding: 12px 25px;
-      font-size: 1.1em;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    #search-button:hover {
-      background-color: #d4ac0d;
-    }
-    #lang-selector {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .lang-btn {
-      cursor: pointer;
-      display: inline-block;
-      color: #f1c40f;
-      margin: 0 10px;
-      font-weight: bold;
-      font-size: 1.2em;
-      user-select: none;
-    }
-    .lang-btn:hover {
-      color: #f39c12;
-    }
-    footer {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 10px;
-    }
-    .footer-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9em;
-      transition: background-color 0.3s ease;
-    }
-    .gmail { background: #ea4335; }
-    .youtube { background: #ff0000; }
-    .maps { background: #4285f4; }
-    .news { background: #ff5722; }
-    .translate { background: #34a853; }
-    .play { background: #4285f4; }
-    .drive { background: #fbbc05; }
-    .products { background: #999; }
-    .analytics { background: #673ab7; }
-    .footer-link:hover {
-      filter: brightness(1.2);
-    }
-    #legal {
-      color: #888;
-      font-size: 0.8em;
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
+<!-- ... باقي كود HTML فوق ... -->
+<style>
+  /* ... باقي CSS ... */
 
-<header>
-  <div id="icon-tariq">T</div>
-  <div id="title">Tariq</div>
+  #icon-tariq {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 65px; /* كبرنا الحجم */
+    height: 65px;
+    background: conic-gradient(#4285f4, #34a853, #fbbc05, #ea4335);
+    color: white;
+    font-weight: bold;
+    font-size: 2em; /* كبرنا الخط داخل الدائرة */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
 
-  <div id="search-box">
-    <input type="text" id="search-input" placeholder="ابحث هنا..." aria-label="Search input" />
-    <button id="search-button">بحث</button>
-  </div>
+  /* ... باقي CSS كما هو ... */
+</style>
 
-  <div id="lang-selector">
-    <span class="lang-btn" data-lang="ar">العربية</span> |
-    <span class="lang-btn" data-lang="fr">Français</span> |
-    <span class="lang-btn" data-lang="en">English</span> |
-    <span class="lang-btn" data-lang="es">Español</span>
-  </div>
-</header>
-
-<footer>
-  <div class="footer-links">
-    <a href="https://mail.google.com" target="_blank" class="footer-link gmail" title="Gmail">G</a>
-    <a href="https://www.youtube.com" target="_blank" class="footer-link youtube" title="YouTube">Y</a>
-    <a href="https://maps.google.com" target="_blank" class="footer-link maps" title="Maps">M</a>
-    <a href="https://news.google.com" target="_blank" class="footer-link news" title="News">N</a>
-    <a href="https://translate.google.com" target="_blank" class="footer-link translate" title="Translate">T</a>
-    <a href="https://play.google.com" target="_blank" class="footer-link play" title="Play">P</a>
-    <a href="https://drive.google.com" target="_blank" class="footer-link drive" title="Drive">D</a>
-    <a href="https://www.google.com/intl/ar/about/products" target="_blank" class="footer-link products" title="More">+</a>
-    <a href="https://analytics.google.com" target="_blank" class="footer-link analytics" title="Analytics">A</a>
-  </div>
-  <div id="legal">
-    تنويه قانوني: هذا الموقع لا ينتمي إلى شركة Google، ولا يستخدم أي شعارات رسمية خاصة بها. جميع الوظائف هنا موجهة للاستخدام الشخصي والتعليمي فقط.
-  </div>
-</footer>
-
+<!-- ... داخل سكريبت JS في الأسفل ... -->
 <script>
   const translations = {
     ar: { placeholder: "ابحث هنا...", searchBtn: "بحث" },
@@ -176,16 +30,15 @@
     es: { placeholder: "Buscar aquí...", searchBtn: "Buscar" }
   };
 
-  const keywords = [
-    "حجز الفنادق", "حجز الطائرات", "حجز القطارات", "حجز السيارات", "صرف العملة",
-    "hotel booking", "flight booking", "train booking", "car rental", "currency exchange",
-    "réservation hôtel", "réservation vol", "réservation train", "location voiture", "change de devises",
-    "reserva hotel", "reserva vuelo", "reserva tren", "alquiler coche", "cambio de moneda"
+  const bookingKeywords = [
+    "حجز فندق", "حجز فنادق", "حجز طائرة", "حجز الطائرات", "حجز القطار", "حجز القطارات",
+    "حجز الحافلة", "حجز الحافلات", "حجز باص", "حجز باصات", "حجز تاكسي", "حجز سيارة", "حجز السيارات",
+    "الفندق", "الفنادق", "القطار", "القطارات", "الطائرة", "الطائرات", "الحافلة", "الباص", "التاكسي",
+    "hotel", "flight", "train", "bus", "car", "taxi", "book hotel", "book flight", "book train"
   ];
 
   const bookingUrl = "https://12go.asia/?z=12574420";
 
-  // تغيير اللغة
   document.querySelectorAll(".lang-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const lang = btn.getAttribute("data-lang");
@@ -194,12 +47,15 @@
     });
   });
 
-  // بحث
   document.getElementById("search-button").addEventListener("click", () => {
     const query = document.getElementById("search-input").value.trim().toLowerCase();
     if (!query) return;
-    const matched = keywords.some(keyword => query.includes(keyword.toLowerCase()));
-    const url = matched ? bookingUrl : "https://www.google.com/search?q=" + encodeURIComponent(query);
+
+    const isBooking = bookingKeywords.some(keyword => query.includes(keyword.toLowerCase()));
+    const url = isBooking
+      ? bookingUrl
+      : "https://www.google.com/search?q=" + encodeURIComponent(query);
+
     window.open(url, "_blank");
   });
 
@@ -209,7 +65,6 @@
     }
   });
 
-  // تغيير لون اسم Tariq كل 3 ثواني
   const title = document.getElementById("title");
   const colors = ["#f1c40f", "#e67e22", "#1abc9c", "#3498db", "#e74c3c"];
   let colorIndex = 0;
@@ -218,6 +73,3 @@
     colorIndex = (colorIndex + 1) % colors.length;
   }, 3000);
 </script>
-
-</body>
-</html>
